@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal Station · Morse Code Translator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- decorative background clusters (hidden from screen readers) -->
+  <div class="bg-morse bg-top" aria-hidden="true">·–·· –·– ·–· ·· –·</div>
+  <div class="bg-morse bg-bottom" aria-hidden="true">––– ·–· ··– –·– ·––</div>
+
+  <header class="site-header">
+    <div class="lamp" id="lamp" aria-hidden="true"></div>
+    <div>
+      <h1>Signal Station</h1>
+      <p class="tagline">Translate text to Morse code and back again.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="translator" aria-label="Morse code translator">
+
+      <div class="direction-bar">
+        <span class="direction-label" id="from-label">Text</span>
+        <button id="swap-btn" class="swap-btn" type="button" aria-label="Swap translation direction">⇄</button>
+        <span class="direction-label" id="to-label">Morse</span>
+      </div>
+
+      <div class="panels">
+        <div class="panel">
+          <div class="panel-head">
+            <label for="input-text" id="input-heading">Type your message</label>
+            <span class="count" id="char-count">0 characters</span>
+          </div>
+          <textarea id="input-text" rows="8" placeholder="Hello world" spellcheck="false"></textarea>
+        </div>
+
+        <div class="panel panel-output">
+          <div class="panel-head">
+            <label for="output-text" id="output-heading">Morse code</label>
+          </div>
+          <textarea id="output-text" rows="8" readonly placeholder="Translation appears here"></textarea>
+        </div>
+      </div>
+
+      <p class="message" id="message" role="status" aria-live="polite"></p>
+
+      <div class="actions">
+        <button id="translate-btn" class="btn primary" type="button">Translate</button>
+        <button id="clear-btn" class="btn" type="button">Clear</button>
+        <button id="copy-btn" class="btn" type="button">Copy result</button>
+        <button id="play-btn" class="btn" type="button">Play signal</button>
+        <label class="speed">
+          Speed
+          <input type="range" id="wpm" min="5" max="30" value="15">
+          <span id="wpm-value">15 WPM</span>
+        </label>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Letters are separated by a space, words by a slash ( / ).</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
